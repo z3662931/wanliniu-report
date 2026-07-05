@@ -13,12 +13,12 @@ h1 { margin:0; font-size:24px; }
 main { max-width:1280px; margin:0 auto; padding:24px; }
 .board-title { background:linear-gradient(135deg,#10233a,#183b5f); color:white; border-radius:8px; padding:24px; margin-bottom:18px; box-shadow:var(--shadow); }
 .board-title h2 { margin:0; font-size:28px; line-height:1.2; letter-spacing:0; }
-.controls { display:grid; grid-template-columns:minmax(260px,1.2fr) 1fr; gap:12px; background:rgba(255,255,255,.96); border:1px solid var(--line); border-radius:8px; padding:14px; margin-bottom:18px; box-shadow:0 8px 22px rgba(16,35,58,.05); }
+.controls { display:grid; grid-template-columns:minmax(240px,1.1fr) minmax(260px,1fr) minmax(150px,.6fr) minmax(150px,.6fr); gap:12px; background:rgba(255,255,255,.96); border:1px solid var(--line); border-radius:8px; padding:14px; margin-bottom:18px; box-shadow:0 8px 22px rgba(16,35,58,.05); }
 .field label { display:block; color:var(--muted); font-size:12px; margin-bottom:7px; }
 select,input { width:100%; height:38px; border:1px solid var(--line); border-radius:6px; padding:0 10px; background:#fff; color:var(--ink); font-size:14px; outline:none; }
 select:focus,input:focus { border-color:#8bb4ff; box-shadow:0 0 0 3px rgba(37,99,235,.12); }
 .date-grid { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
-.quick { display:flex; gap:8px; flex-wrap:wrap; align-items:flex-end; }
+.quick { grid-column:1 / -1; display:flex; gap:8px; flex-wrap:wrap; align-items:flex-end; }
 .quick button,.metric-tabs button { height:34px; border:1px solid var(--line); background:#fff; border-radius:6px; padding:0 11px; color:var(--ink); cursor:pointer; transition:background .18s,border-color .18s,transform .18s; }
 .quick button:hover,.metric-tabs button:hover { border-color:#9db2c8; transform:translateY(-1px); }
 .quick button.active,.metric-tabs button.active { background:var(--dark); color:#fff; border-color:var(--dark); }
@@ -104,6 +104,14 @@ td.down { color:var(--red); font-weight:650; }
       <label>日期</label>
       <div class="date-grid"><input id="startDate" type="date" min="2026-04-04" max="2026-07-04"><input id="endDate" type="date" min="2026-04-04" max="2026-07-04"></div>
     </div>
+    <div class="field">
+      <label for="yearSelect">年份筛选</label>
+      <select id="yearSelect"></select>
+    </div>
+    <div class="field">
+      <label for="monthSelect">月份筛选</label>
+      <select id="monthSelect"></select>
+    </div>
     <div class="quick" aria-label="快捷日期">
       <button type="button" class="active" data-days="7">近7天</button>
       <button type="button" data-days="14">近14天</button>
@@ -139,6 +147,8 @@ const allDates = ["2026-04-04", "2026-04-05", "2026-04-06", "2026-04-07", "2026-
 const shopSelect = document.getElementById('shopSelect');
 const startDate = document.getElementById('startDate');
 const endDate = document.getElementById('endDate');
+const yearSelect = document.getElementById('yearSelect');
+const monthSelect = document.getElementById('monthSelect');
 const cards = document.getElementById('metricCards');
 const tableHead = document.getElementById('summaryHead');
 const tableBody = document.getElementById('summaryRows');
@@ -162,6 +172,33 @@ function int(v) { return Number(v || 0).toLocaleString('zh-CN', {maximumFraction
 function compact(v) { if (v >= 10000) return (v / 10000).toFixed(1) + '万'; if (v >= 1000) return (v / 1000).toFixed(1) + 'k'; return Number(v || 0).toFixed(0); }
 function pctJs(current, previous) { return previous ? ((current - previous) / previous * 100) : 0; }
 function pctText(v) { return (v >= 0 ? '+' : '') + v.toFixed(2) + '%'; }
+function yearKey(date) { return date.slice(0, 4); }
+function monthKey(date) { return date.slice(5, 7); }
+function monthLabel(key) { return Number(key) + '月'; }
+function yearRanges() {
+  const map = new Map();
+  allDates.forEach(date => {
+    const key = yearKey(date);
+    if (!map.has(key)) map.set(key, { key, start: date, end: date });
+    else map.get(key).end = date;
+  });
+  return [...map.values()];
+}
+function monthRangesForYear(year) {
+  const dates = year && year !== '__ALL__' ? allDates.filter(date => yearKey(date) === year) : allDates;
+  const map = new Map();
+  dates.forEach(date => {
+    const key = monthKey(date);
+    if (!map.has(key)) map.set(key, { key, start: date, end: date });
+    else map.get(key).end = date;
+  });
+  return [...map.values()];
+}
+function clearDateActives() {
+  document.querySelectorAll('.quick button').forEach(btn => btn.classList.remove('active'));
+  yearSelect.value = '';
+  monthSelect.value = '';
+}
 function deltaClass(v) { if (v > 0.01) return 'up'; if (v < -0.01) return 'down'; return ''; }
 function statusClass(status) {
   if (status === '增长' || status === '小幅增长') return 'status-growth';
@@ -429,12 +466,43 @@ function setQuick(days, previous = false) {
   const startIndex = Math.max(endIndex - days + 1, 0);
   startDate.value = allDates[startIndex];
   endDate.value = allDates[endIndex];
+  clearDateActives();
   document.querySelectorAll('.quick button').forEach(btn => btn.classList.toggle('active', Number(btn.dataset.days) === days && !previous));
   refresh();
 }
+function applyYearMonthRange() {
+  const year = yearSelect.value;
+  const month = monthSelect.value;
+  if (!year && !month) return;
+  let dates = allDates.slice();
+  if (year && year !== '__ALL__') dates = dates.filter(date => yearKey(date) === year);
+  if (month && month !== '__ALL__') dates = dates.filter(date => monthKey(date) === month);
+  if (!dates.length) return;
+  startDate.value = dates[0];
+  endDate.value = dates[dates.length - 1];
+  document.querySelectorAll('.quick button').forEach(btn => btn.classList.remove('active'));
+  refresh();
+}
+function renderMonthOptions() {
+  const year = yearSelect.value || '__ALL__';
+  const months = monthRangesForYear(year);
+  monthSelect.innerHTML = '<option value="">选择月份</option><option value="__ALL__">全部月份</option>' + months.map(item => `<option value="${item.key}">${monthLabel(item.key)}（${item.start.slice(5)} 至 ${item.end.slice(5)}）</option>`).join('');
+}
+function renderYearMonthSelects() {
+  const years = yearRanges();
+  yearSelect.innerHTML = '<option value="">选择年份</option><option value="__ALL__">全部年份</option>' + years.map(item => `<option value="${item.key}">${item.key}年</option>`).join('');
+  renderMonthOptions();
+}
 document.querySelectorAll('.quick button').forEach(btn => btn.addEventListener('click', () => btn.dataset.prev ? setQuick(Number(btn.dataset.prev), true) : setQuick(Number(btn.dataset.days), false)));
 document.querySelectorAll('.metric-tabs button').forEach(btn => btn.addEventListener('click', () => { mode = btn.dataset.mode; document.querySelectorAll('.metric-tabs button').forEach(item => item.classList.toggle('active', item === btn)); drawChart(); }));
-[shopSelect, startDate, endDate].forEach(el => el.addEventListener('change', refresh));
+[shopSelect].forEach(el => el.addEventListener('change', refresh));
+[startDate, endDate].forEach(el => el.addEventListener('change', () => { clearDateActives(); refresh(); }));
+yearSelect.addEventListener('change', () => {
+  renderMonthOptions();
+  monthSelect.value = '__ALL__';
+  applyYearMonthRange();
+});
+monthSelect.addEventListener('change', applyYearMonthRange);
 canvas.addEventListener('mousemove', event => {
   if (!chartState || !chartState.daily.length) return;
   const rect = canvas.getBoundingClientRect();
@@ -446,6 +514,7 @@ canvas.addEventListener('mousemove', event => {
   showTooltip(index);
 });
 canvas.addEventListener('mouseleave', () => { tooltip.style.display = 'none'; drawChart(); });
+renderYearMonthSelects();
 refresh();
 </script>
 </body>
