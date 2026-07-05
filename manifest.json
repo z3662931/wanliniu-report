@@ -1,8 +1,9 @@
 {
-  "updated_at": "2026-07-05 15:57:00",
+  "updated_at": "2026-07-05 16:16:48",
   "target_date": "2026-07-04",
   "source_report": "/Users/zhuhaibo/Documents/Codex/2026-07-04/new-chat/outputs/wanliniu_宠物店14店经营看板_自动更新.html",
   "latest_html": "/Users/zhuhaibo/Documents/Codex/2026-07-04/new-chat/outputs/feishu_pages_site/wanliniu-latest.html",
   "index_html": "/Users/zhuhaibo/Documents/Codex/2026-07-04/new-chat/outputs/feishu_pages_site/index.html",
-  "online_url": "https://z3662931.github.io/wanliniu-report/"
+  "online_url": "https://z3662931.github.io/wanliniu-report/",
+  "note": "Updated after manual Wanliniu re-collect for 2026-07-04."
 }
