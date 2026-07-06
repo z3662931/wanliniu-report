@@ -1,7 +1,7 @@
 {
   "updated_at": "2026-07-06 11:24:05 CST",
   "target_date": "2026-07-05",
-  "status": "published_sanitized_pending_push",
+  "status": "published_sanitized",
   "report_type": "public_sanitized",
   "source_report": "/Users/zhuhaibo/Documents/Codex/2026-07-04/new-chat/outputs/wanliniu_宠物店公开脱敏经营看板.html",
   "online_url": "https://z3662931.github.io/wanliniu-report/",
@@ -9,5 +9,5 @@
   "contains_exact_amounts": false,
   "contains_exact_orders": false,
   "latest_date_coverage": "11/14",
-  "note": "Public sanitized report: anonymous shops and index/percentage trends only."
+  "note": "Public sanitized report is online: anonymous shops and index/percentage trends only."
 }
