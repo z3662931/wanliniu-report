@@ -1,9 +1,13 @@
 {
-  "updated_at": "2026-07-05 16:16:48",
-  "target_date": "2026-07-04",
-  "source_report": "/Users/zhuhaibo/Documents/Codex/2026-07-04/new-chat/outputs/wanliniu_宠物店14店经营看板_自动更新.html",
-  "latest_html": "/Users/zhuhaibo/Documents/Codex/2026-07-04/new-chat/outputs/feishu_pages_site/wanliniu-latest.html",
-  "index_html": "/Users/zhuhaibo/Documents/Codex/2026-07-04/new-chat/outputs/feishu_pages_site/index.html",
+  "updated_at": "2026-07-06 11:24:05 CST",
+  "target_date": "2026-07-05",
+  "status": "published_sanitized_pending_push",
+  "report_type": "public_sanitized",
+  "source_report": "/Users/zhuhaibo/Documents/Codex/2026-07-04/new-chat/outputs/wanliniu_宠物店公开脱敏经营看板.html",
   "online_url": "https://z3662931.github.io/wanliniu-report/",
-  "note": "Updated after manual Wanliniu re-collect for 2026-07-04."
+  "contains_shop_names": false,
+  "contains_exact_amounts": false,
+  "contains_exact_orders": false,
+  "latest_date_coverage": "11/14",
+  "note": "Public sanitized report: anonymous shops and index/percentage trends only."
 }
