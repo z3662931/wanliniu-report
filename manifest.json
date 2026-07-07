@@ -1,13 +1,8 @@
 {
-  "updated_at": "2026-07-06 11:24:05 CST",
-  "target_date": "2026-07-05",
-  "status": "published_sanitized",
-  "report_type": "public_sanitized",
-  "source_report": "/Users/zhuhaibo/Documents/Codex/2026-07-04/new-chat/outputs/wanliniu_宠物店公开脱敏经营看板.html",
-  "online_url": "https://z3662931.github.io/wanliniu-report/",
-  "contains_shop_names": false,
-  "contains_exact_amounts": false,
-  "contains_exact_orders": false,
-  "latest_date_coverage": "11/14",
-  "note": "Public sanitized report is online: anonymous shops and index/percentage trends only."
+  "target_date": "2026-07-06",
+  "status": "prepared_local_full_not_pushed",
+  "report_type": "full_private_business_data",
+  "updated_at": "2026-07-07 11:08:56 CST",
+  "online_updated": false,
+  "reason": "完整报告包含店铺全名、付款金额、付款笔数等经营数据；公开 GitHub Pages 代发布此前已被审查拦截。本轮仅生成本地完整看板和本地待发布文件，不绕过限制公开上传。"
 }
