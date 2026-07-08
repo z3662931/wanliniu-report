@@ -1,8 +1,14 @@
 {
-  "target_date": "2026-07-06",
-  "status": "prepared_local_full_not_pushed",
-  "report_type": "full_private_business_data",
-  "updated_at": "2026-07-07 11:08:56 CST",
+  "target_date": "2026-07-07",
+  "status": "public_manual_handoff_ready",
+  "report_type": "full_public_manual_upload",
+  "updated_at": "2026-07-08 12:32:53 CST",
   "online_updated": false,
-  "reason": "完整报告包含店铺全名、付款金额、付款笔数等经营数据；公开 GitHub Pages 代发布此前已被审查拦截。本轮仅生成本地完整看板和本地待发布文件，不绕过限制公开上传。"
+  "reason": "取消私有看板发布路径；本轮生成公开 GitHub Pages 所需完整文件，交由用户点击/拖拽提交发布。",
+  "features": [
+    "clickable_manual_upload_paths",
+    "sortable_shop_summary_metrics",
+    "correct_login_entry_erp_hupun_frame",
+    "semi_automatic_user_click_upload"
+  ]
 }
