@@ -1,14 +1,9 @@
 {
-  "target_date": "2026-07-07",
-  "status": "public_manual_handoff_ready",
-  "report_type": "full_public_manual_upload",
-  "updated_at": "2026-07-08 12:32:53 CST",
-  "online_updated": false,
-  "reason": "取消私有看板发布路径；本轮生成公开 GitHub Pages 所需完整文件，交由用户点击/拖拽提交发布。",
-  "features": [
-    "clickable_manual_upload_paths",
-    "sortable_shop_summary_metrics",
-    "correct_login_entry_erp_hupun_frame",
-    "semi_automatic_user_click_upload"
-  ]
+  "target_date": "2026-07-10",
+  "status": "online_files_ready",
+  "report_type": "wanliniu_full_dashboard_with_promotion",
+  "updated_at": "2026-07-10 20:10:47",
+  "source_html": "/Users/zhuhaibo/Documents/宠物 | 数据抓取/outputs/wanliniu_推广数据经营看板_补推广版.html",
+  "online_url": "https://z3662931.github.io/wanliniu-report/",
+  "publish_requested": false
 }
