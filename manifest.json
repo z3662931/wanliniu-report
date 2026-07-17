@@ -1,17 +1,16 @@
 {
-  "target_date": "2026-07-15",
-  "status": "published",
-  "report_type": "wanliniu_final_promotion_decision_dashboard",
-  "updated_at": "2026-07-16 19:00:46",
+  "target_date": "2026-07-16",
+  "status": "upload_files_ready",
+  "report_type": "wanliniu_dashboard_with_existing_promotion",
+  "updated_at": "2026-07-17 14:38:24",
   "data_range": [
     "2026-04-04",
-    "2026-07-15"
+    "2026-07-16"
   ],
   "shops": 14,
-  "rows": 1238,
-  "source_html": "outputs/wanliniu_店铺投放决策看板_最终发布版.html",
+  "rows": 1252,
+  "source_html": "/Users/zhuhaibo/Documents/宠物 | 数据抓取/outputs/wanliniu_推广数据经营看板_补推广版.html",
   "online_url": "https://z3662931.github.io/wanliniu-report/",
   "upload_url": "https://github.com/z3662931/wanliniu-report/upload/main",
-  "launcher": "/Users/zhuhaibo/Documents/宠物 | 数据抓取/work/打开上传包和GitHub发布页.command",
-  "published_at": "2026-07-16T19:07:33+08:00"
+  "launcher": "/Users/zhuhaibo/Documents/宠物 | 数据抓取/work/打开上传包和GitHub发布页.command"
 }
