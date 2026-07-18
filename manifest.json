@@ -1,8 +1,8 @@
 {
   "target_date": "2026-07-17",
-  "status": "upload_files_ready",
+  "status": "published",
   "report_type": "wanliniu_dashboard_with_promotion",
-  "updated_at": "2026-07-18 11:23:28",
+  "updated_at": "2026-07-18 12:20:49",
   "data_range": [
     "2026-04-04",
     "2026-07-17"
@@ -12,5 +12,6 @@
   "source_html": "/Users/zhuhaibo/Documents/宠物 | 数据抓取/outputs/wanliniu_推广数据经营看板_补推广版.html",
   "online_url": "https://z3662931.github.io/wanliniu-report/",
   "upload_url": "https://github.com/z3662931/wanliniu-report/upload/main",
-  "launcher": "/Users/zhuhaibo/Documents/宠物 | 数据抓取/work/打开上传包和GitHub发布页.command"
+  "launcher": "/Users/zhuhaibo/Documents/宠物 | 数据抓取/work/打开上传包和GitHub发布页.command",
+  "published_at": "2026-07-18T15:44:20+08:00"
 }
