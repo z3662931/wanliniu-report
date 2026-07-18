@@ -1,0 +1,60 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="/wanliniu-report/share/assets/index-CJwqunrb.css" data-rsc-css-href="/wanliniu-report/share/assets/index-CJwqunrb.css" data-precedence="vite-rsc/importer-resources"/><link rel="modulepreload" href="/wanliniu-report/share/assets/layout-segment-context-BBXdHzNQ.js" crossorigin=""/><link rel="modulepreload" href="/wanliniu-report/share/assets/rolldown-runtime-S-ySWqyJ.js" crossorigin=""/><link rel="modulepreload" href="/wanliniu-report/share/assets/index-C4msl6Ak.js" crossorigin=""/><link rel="modulepreload" href="/wanliniu-report/share/assets/framework-DjPHiq1u.js" crossorigin=""/><link rel="modulepreload" href="/wanliniu-report/share/assets/page-DPIc6XCt.js" crossorigin=""/><title>经营看板｜OPS CTRL</title><meta name="description" content="面向电商经营负责人的实时经营、利润、投放与异常监控看板。"/><script>self.__VINEXT_RSC_PARAMS__={}</script><script>self.__VINEXT_RSC_NAV__={"pathname":"/","searchParams":[]}</script><link rel="modulepreload" href="/wanliniu-report/share/assets/index-C4msl6Ak.js" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist&amp;display=swap" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist+Mono&amp;display=swap" />
+<style data-vinext-fonts>.__font_geist_1qyd02f { font-family: 'Geist', sans-serif; }
+
+.__variable_geist_1qyd02f { --font-geist-sans: 'Geist', sans-serif; }
+
+.__font_geist_mono_0vffvn2 { font-family: 'Geist Mono', sans-serif; }
+
+.__variable_geist_mono_0vffvn2 { --font-geist-mono: 'Geist Mono', sans-serif; }
+</style>
+<meta name="robots" content="noindex,nofollow,noarchive"><meta name="referrer" content="no-referrer">
+<style id="share-access-style">
+#share-access-gate{position:fixed;inset:0;z-index:99999;display:none;place-items:center;padding:24px;background:#071018;color:#eefcff;font-family:system-ui,-apple-system,sans-serif}.share-access-card{width:min(520px,100%);padding:32px;border:1px solid rgba(90,220,255,.24);border-radius:18px;background:#0d1b27;box-shadow:0 24px 80px rgba(0,0,0,.45)}.share-access-card strong{display:block;margin-bottom:12px;font-size:24px}.share-access-card p{margin:0;color:#a8bfcc;line-height:1.7}
+</style>
+<script>
+(() => {
+  const encryptedDataUrl = "/wanliniu-report/share/wanliniu-data.enc.json";
+  const originalFetch = window.fetch.bind(window);
+  const keyText = new URLSearchParams(window.location.hash.slice(1)).get("k") || "";
+  const decode = (value) => {
+    const normalized = value.replace(/-/g, "+").replace(/_/g, "/") + "=".repeat((4 - value.length % 4) % 4);
+    const binary = atob(normalized);
+    return Uint8Array.from(binary, (char) => char.charCodeAt(0));
+  };
+  const showGate = (message) => {
+    const render = () => {
+      let gate = document.getElementById("share-access-gate");
+      if (!gate) {
+        gate = document.createElement("div");
+        gate.id = "share-access-gate";
+        gate.innerHTML = '<div class="share-access-card"><strong>经营看板访问链接无效</strong><p></p></div>';
+        document.body.appendChild(gate);
+      }
+      gate.querySelector("p").textContent = message;
+      gate.style.display = "grid";
+    };
+    if (document.body) render(); else window.addEventListener("DOMContentLoaded", render, { once: true });
+  };
+  window.fetch = async (input, init) => {
+    const requested = new URL(typeof input === "string" ? input : input.url, window.location.href);
+    if (!requested.pathname.endsWith("/wanliniu-data.json")) return originalFetch(input, init);
+    if (!keyText) {
+      showGate("请使用项目负责人提供的完整分享链接访问。普通网址不包含数据访问密钥。");
+      throw new Error("missing share key");
+    }
+    try {
+      const encryptedResponse = await originalFetch(encryptedDataUrl, { cache: "no-store" });
+      if (!encryptedResponse.ok) throw new Error("encrypted data unavailable");
+      const payload = await encryptedResponse.json();
+      const key = await crypto.subtle.importKey("raw", decode(keyText), "AES-GCM", false, ["decrypt"]);
+      const plaintext = await crypto.subtle.decrypt({ name: "AES-GCM", iv: decode(payload.iv) }, key, decode(payload.ciphertext));
+      return new Response(plaintext, { headers: { "content-type": "application/json; charset=utf-8", "cache-control": "no-store" } });
+    } catch (error) {
+      showGate("链接中的访问密钥不正确，或数据文件暂时不可用。请重新复制项目负责人提供的完整链接。");
+      throw error;
+    }
+  };
+})();
+</script></head><body class="__variable_geist_1qyd02f __variable_geist_mono_0vffvn2"><main class="loading-screen"><div class="loading-core"><span></span><strong>经营看板</strong><small>正在装载万里牛与推广数据…</small></div></main><script id="_R_">import("/wanliniu-report/share/assets/index-C4msl6Ak.js")</script></body></html><script>self.__VINEXT_RSC_CHUNKS__=self.__VINEXT_RSC_CHUNKS__||[];self.__VINEXT_RSC_CHUNKS__.push("2:I[\"8c0f216c4604\",[],\"Children\",1]\n3:I[\"15c18cfaeeff\",[],\"LayoutSegmentProvider\",1]\n4:I[\"8c0f216c4604\",[],\"Slot\",1]\n5:I[\"593f344dc510\",[],\"RedirectBoundary\",1]\n:HL[\"/wanliniu-report/share/assets/index-CJwqunrb.css\",\"style\"]\n0:{\"__route\":\"route:/\",\"__interceptionContext\":null,\"__layoutIds\":[\"layout:/\"],\"__rootLayout\":\"/\",\"page:/\":\"$L1\",\"layout:/\":[[[[\"$\",\"link\",\"css:/wanliniu-report/share/assets/index-CJwqunrb.css\",{\"rel\":\"stylesheet\",\"precedence\":\"vite-rsc/importer-resources\",\"href\":\"/wanliniu-report/share/assets/index-CJwqunrb.css\",\"data-rsc-css-href\":\"/wanliniu-report/share/assets/index-CJwqunrb.css\"}],\"$undefined\"],[\"$\",\"html\",null,{\"lang\":\"zh-CN\",\"children\":[\"$\",\"body\",null,{\"className\":\"__variable_geist_1qyd02f __variable_geist_mono_0vffvn2\",\"children\":[\"$\",\"$L2\",null,{}]}]}]],null],\"route:/\":[[[\"$\",\"meta\",null,{\"charSet\":\"utf-8\"}],[[\"$\",\"title\",\"0\",{\"children\":\"经营看板｜OPS CTRL\"}],[\"$\",\"meta\",\"1\",{\"name\":\"description\",\"content\":\"面向电商经营负责人的实时经营、利润、投放与异常监控看板。\"}]],[[\"$\",\"meta\",\"0\",{\"name\":\"viewport\",\"content\":\"width=device-width, initial-scale=1\"}]]],[\"$\",\"$L3\",null,{\"segmentMap\":{\"children\":[]},\"children\":[\"$\",\"$L4\",null,{\"id\":\"layout:/\",\"parallelSlots\":\"$undefined\",\"children\":[\"$\",\"$L5\",null,{\"children\":[\"$\",\"$L3\",null,{\"segmentMap\":{\"children\":[]},\"children\":[\"$\",\"$L4\",null,{\"id\":\"page:/\"}]}]}]}]}]],\"__layoutFlags\":{\"layout:/\":\"s\"},\"__artifactCompatibility\":{\"schemaVersion\":1,\"graphVersion\":\"app-route-graph:4uhn5s1wvoptc\",\"deploymentVersion\":\"e90088e8-e4d5-4c7c-aa9c-07ee1ca5da44\",\"appElementsSchemaVersion\":1,\"rscPayloadSchemaVersion\":1,\"rootBoundaryId\":\"/\",\"renderEpoch\":null}}\n")</script><script>self.__VINEXT_RSC_CHUNKS__=self.__VINEXT_RSC_CHUNKS__||[];self.__VINEXT_RSC_CHUNKS__.push("6:I[\"6efdf509a785\",[],\"default\",1]\n1:[\"$\",\"$L6\",null,{\"params\":\"$@7\",\"searchParams\":\"$@8\"}]\n")</script><script>self.__VINEXT_RSC_CHUNKS__=self.__VINEXT_RSC_CHUNKS__||[];self.__VINEXT_RSC_CHUNKS__.push("7:{}\n8:{}\n")</script><script>self.__VINEXT_RSC_DONE__=true</script>
